@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row class="justify-content-between">
-        <span>Users</span>
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        <span>Base Front Angular with Clean Architecture</span>
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>account_circle</mat-icon>
         </button>
@@ -15,7 +15,7 @@
             <mat-card-subtitle>{{ usuario.email }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
-            <div class="m-0 row justify-content-end">
+            <div fxLayout="row" fxLayoutAlign="center">
                 <button mat-button (click)="logout()">Sair</button>
             </div>
         </mat-card-actions>
