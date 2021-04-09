@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { from } from 'rxjs';
-import { UserControllerService } from '../../controllers/user/user-controller.service';
+import { UserControllerService } from '../../../controllers/user/user-controller.service';
 
 @Component({
   selector: 'app-user',

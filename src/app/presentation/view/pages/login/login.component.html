@@ -1,0 +1,32 @@
+<section>
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="login()" novalidate>
+
+            <mat-card class="mat-elevation-z8">
+                <mat-card-title>Login</mat-card-title>
+                <mat-card-content fxLayout="column">
+                    <mat-form-field>
+                        <input matInput formControlName="username" type="text" placeholder="Usuario" autocomplete="email"
+                            readonly="false">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput formControlName="password" type="password" placeholder="Password"
+                            autocomplete="password">
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions>
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <button mat-button color="primary" type="submit" [disabled]="!form.valid">
+                            <mat-icon>check</mat-icon>Entrar
+                        </button>
+                        <!-- <button mat-button color="accent" routerLink="/auth/forgot">
+                            <mat-icon>lock_open</mat-icon><u> ESQUECI A SENHA</u>
+                        </button> -->
+                    </div>
+                </mat-card-actions>
+                <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar> -->
+            </mat-card>
+
+        </form>
+    </div>
+</section>

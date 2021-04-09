@@ -13,10 +13,10 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class RegisterUserUseCase implements RegisterUser {
+export class UserUseCase implements RegisterUser {
 
     constructor(private userRepo: UserRepository) { }
-
+    
     register(userData: UserData): Observable<UserData> {
 
         // const userOrError: Either<InvalidNameError | InvalidEmailError, User> = User.create(userData)
@@ -34,5 +34,12 @@ export class RegisterUserUseCase implements RegisterUser {
         // return right(resultUser)
 
         return this.userRepo.register({ name: userData.name, email: userData.email })
+    }
+
+    login(param: UserData): Observable<UserData> {
+        throw new Error('Method not implemented.');
+    }
+    logout(): Observable<boolean> {
+        throw new Error('Method not implemented.');
     }
 }

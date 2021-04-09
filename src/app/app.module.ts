@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
-import { DataModule } from './external/data.module';
+import { ExternalModule } from './external/external.module';
 import { PresentationModule } from './presentation/presentation.module';
 import { RouterModule } from '@angular/router';
 import { UserWebRepository } from './external/repository/user/user-web-repository';
@@ -21,7 +21,7 @@ import { UserRepository } from './core/usecases/ports/user-repository';
     // Application imports
     // CoreModule,
     // DomainModule,
-    DataModule,
+    ExternalModule,
     // InfraModule,
     PresentationModule
   ],

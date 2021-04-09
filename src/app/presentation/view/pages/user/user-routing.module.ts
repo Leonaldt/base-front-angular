@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { RouteService } from '../route.service';
 
 import { UserComponent } from './user.component';
 
 const routes: Routes = [
-    // RouteService.withShell([
-    { path: '', redirectTo: '/users', pathMatch: 'full' },
-    {
-        path: 'users',
-        component: UserComponent,
-        data: {
-            title: 'Users'
+    RouteService.withShell([
+        { path: '', redirectTo: '/users', pathMatch: 'full' },
+        {
+            path: 'users',
+            component: UserComponent,
+            data: {
+                title: 'Users'
+            }
         }
-    }
-    // ])
+    ])
 ];
 
 @NgModule({

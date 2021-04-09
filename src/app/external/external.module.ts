@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { UserRepository } from '../core/usecases/ports/user-repository';
-import { UserWebRepository } from '../external/repository/user/user-web-repository';
+import { UserWebRepository } from './repository/user/user-web-repository';
 
 @NgModule({
     declarations: [],
@@ -14,4 +14,4 @@ import { UserWebRepository } from '../external/repository/user/user-web-reposito
         { provide: UserRepository, useClass: UserWebRepository }
     ],
 })
-export class DataModule { }
+export class ExternalModule { }
