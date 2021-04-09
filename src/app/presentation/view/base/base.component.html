@@ -11,12 +11,12 @@
     <mat-card class="menu-card" *ngIf="usuario">
         <mat-card-header>
             <div mat-card-avatar class="menu-card-header-image"></div>
-            <mat-card-title>{{ 'TXT_OLA' }}, {{usuario.username}}</mat-card-title>
-            <mat-card-subtitle>{{usuario.email}}</mat-card-subtitle>
+            <mat-card-title>Olá, {{ usuario.name }}</mat-card-title>
+            <mat-card-subtitle>{{ usuario.email }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
             <div class="m-0 row justify-content-end">
-                <button mat-button (click)="logout()">{{ 'TXT_SAIR' }}</button>
+                <button mat-button (click)="logout()">Sair</button>
             </div>
         </mat-card-actions>
     </mat-card>

@@ -32,25 +32,27 @@ export class LoginComponent implements OnInit {
 
   private createForm() {
     this.form = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   login() {
-    this.isLoading = true;
+    // this.isLoading = true;
 
-    this.usuarioController
-      .login(this.form.value)
-      .pipe(finalize(() => {
-        this.isLoading = false;
-      }))
-      .subscribe(
-        (usuario: UserData) => this.loginResponse(usuario),
-        (err: any[]) => console.log(err)
-        // (err: ValidationError[]) => this.notification.open(err)
-      );
+    // this.usuarioController
+    //   .login(this.form.value)
+    //   .pipe(finalize(() => {
+    //     this.isLoading = false;
+    //   }))
+    //   .subscribe(
+    //     (usuario: UserData) => this.loginResponse(usuario),
+    //     (err: any[]) => console.log(err)
+    //     // (err: ValidationError[]) => this.notification.open(err)
+    //   );
 
+
+    this.loginResponse({ name: 'Leonidas', email: 'leonidas.ollima@gmail.com' })
   }
 
   loginResponse(usuario: UserData) {

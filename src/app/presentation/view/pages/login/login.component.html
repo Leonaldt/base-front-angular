@@ -2,12 +2,12 @@
     <div class="container">
         <form [formGroup]="form" (ngSubmit)="login()" novalidate>
 
-            <mat-card class="mat-elevation-z8">
+            <mat-card class="login-card" class="mat-elevation-z8">
                 <mat-card-title>Login</mat-card-title>
                 <mat-card-content fxLayout="column">
                     <mat-form-field>
-                        <input matInput formControlName="username" type="text" placeholder="Usuario" autocomplete="email"
-                            readonly="false">
+                        <input matInput formControlName="email" type="text" placeholder="Usuario"
+                            autocomplete="email" readonly="false">
                     </mat-form-field>
                     <mat-form-field>
                         <input matInput formControlName="password" type="password" placeholder="Password"

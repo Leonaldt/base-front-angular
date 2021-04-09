@@ -25,8 +25,9 @@ export class BaseComponent implements OnInit {
   }
 
   logout() {
-    this.usuarioController.logout()
-      .subscribe(() => this.responseLogout());
+    console.log('usuario: ', this.usuario)
+    // this.usuarioController.logout()
+    //   .subscribe(() => this.responseLogout());
   }
 
   responseLogout() {
