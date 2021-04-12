@@ -17,10 +17,20 @@ export class UserWebRepository implements UserRepository {
     register(userEntity: UserEntity): Observable<UserEntity> {
         let user = {
             name: userEntity.name,
-            email: userEntity.email
+            email: userEntity.email,
+            password: userEntity.password
         }
 
         return this.http.post<UserEntity>('http://127.0.0.1:5000/api/register', user);
+    }
+
+    login(userEntity: UserEntity): Observable<UserEntity> {
+        let user = {
+            email: userEntity.email,
+            password: userEntity.password
+        }
+
+        return this.http.post<UserEntity>('http://127.0.0.1:5000/api/login', user);
     }
 
     getUserById(id: number): Observable<UserEntity> {

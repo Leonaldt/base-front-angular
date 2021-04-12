@@ -9,7 +9,10 @@ export class UserRepositoryMapper extends Mapper<UserEntity, User> {
 
     mapFrom(userEntity: UserEntity): any {
 
-        const userOrError: Either<InvalidNameError | InvalidEmailError, User> = User.create({ name: userEntity.name, email: userEntity.email })
+        const userOrError: Either<InvalidNameError | InvalidEmailError, User> =
+            User.create({
+                name: userEntity.name, email: userEntity.email, password: userEntity.password
+            })
 
         if (userOrError.isLeft()) {
             return left(userOrError.value)
@@ -23,6 +26,7 @@ export class UserRepositoryMapper extends Mapper<UserEntity, User> {
         return {
             name: user.name.toString(),
             email: user.email.toString(),
+            password: user.password
         };
     }
 }

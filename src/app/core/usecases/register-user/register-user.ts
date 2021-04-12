@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 export class UserUseCase implements RegisterUser {
 
     constructor(private userRepo: UserRepository) { }
-    
+
     register(userData: UserData): Observable<UserData> {
 
         // const userOrError: Either<InvalidNameError | InvalidEmailError, User> = User.create(userData)
@@ -33,13 +33,14 @@ export class UserUseCase implements RegisterUser {
 
         // return right(resultUser)
 
-        return this.userRepo.register({ name: userData.name, email: userData.email })
+        return this.userRepo.register({ name: userData.name, email: userData.email, password: userData.password })
     }
 
     login(param: UserData): Observable<UserData> {
-        throw new Error('Method not implemented.');
+        return this.userRepo.login(param);
     }
+
     logout(): Observable<boolean> {
-        throw new Error('Method not implemented.');
+        return this.userRepo.logout();
     }
 }

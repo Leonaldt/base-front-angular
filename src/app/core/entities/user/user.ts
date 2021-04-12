@@ -9,7 +9,8 @@ export class User {
 
     private constructor(
         readonly name: Name,
-        readonly email: Email
+        readonly email: Email,
+        readonly password: string
     ) {
         Object.freeze(this)
     }
@@ -25,6 +26,6 @@ export class User {
         }
         const name: Name = nameOrError.value
         const email: Email = emailOrError.value
-        return right(new User(name, email))
+        return right(new User(name, email, userData.password))
     }
 }

@@ -21,7 +21,7 @@ export class UserControllerService implements RegisterUser {
   }
 
   logout(): Observable<boolean> {
-    return this.logout();
+    return this.registerUser.logout();
   }
 
 }

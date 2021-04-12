@@ -14,55 +14,38 @@ import { RegisterUser } from '../../../../core/usecases/ports/register-user';
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
   isLoading: boolean;
+
+  form: FormGroup = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required]
+  });
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private router: Router,
-    // private notification: NotificationService,
     private usuarioController: RegisterUser
   ) { }
 
-  ngOnInit(): void {
-    this.createForm();
-  }
-
-  private createForm() {
-    this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+  ngOnInit(): void { }
 
   login() {
-    // this.isLoading = true;
+    this.isLoading = true;
 
-    // this.usuarioController
-    //   .login(this.form.value)
-    //   .pipe(finalize(() => {
-    //     this.isLoading = false;
-    //   }))
-    //   .subscribe(
-    //     (usuario: UserData) => this.loginResponse(usuario),
-    //     (err: any[]) => console.log(err)
-    //     // (err: ValidationError[]) => this.notification.open(err)
-    //   );
-
-
-    this.loginResponse({ name: 'Leonidas', email: 'leonidas.ollima@gmail.com' })
-  }
-
-  loginResponse(usuario: UserData) {
-    if (usuario) {
-      this.authService.credentials = usuario;
-      this.router.navigateByUrl('/home');
-    } else {
-      this.snackBar.open('Usuário ou senha inválidos.', null, {
-        duration: 2000
+    this.usuarioController
+      .login(this.form.value)
+      .pipe(finalize(() => {
+        this.isLoading = false;
+      }))
+      .subscribe((usuario: UserData) => {
+        this.authService.credentials = usuario;
+        this.router.navigateByUrl('/');
+      }, () => {
+        this.snackBar.open('Usuário ou senha inválidos.', null, {
+          duration: 2000
+        });
       });
-    }
   }
 }
