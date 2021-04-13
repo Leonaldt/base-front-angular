@@ -35,8 +35,8 @@ export class UserUseCase implements UserRepository {
         return this.userRepo.signUp({ name: userData.name, email: userData.email, password: userData.password })
     }
 
-    login(email: string, password: string): Observable<UserData> {
-        return this.userRepo.login(email, password);
+    signIn(email: string, password: string): Observable<UserData> {
+        return this.userRepo.signIn(email, password);
     }
 
     logout(): Observable<boolean> {

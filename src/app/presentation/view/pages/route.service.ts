@@ -13,7 +13,8 @@ export class RouteService {
             path: '',
             component: BaseComponent,
             children: routes,
-            canActivate: [AuthGuard]
+            canActivate: [AuthGuard],
+            // canActivateChild: [AuthGuard]
         };
     }
 

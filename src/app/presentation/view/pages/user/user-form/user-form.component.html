@@ -23,7 +23,8 @@
             </mat-form-field>
         </div>
 
-        <div fxLayout="row" fxLayoutAlign="center">
+        <div fxLayout="row" fxLayoutAlign="space-around stretch">
+            <button type="button" mat-button color="accent" routerLink="/users">Voltar</button>
             <button type="submit" mat-raised-button color="primary" [disabled]="userForm.invalid">Save</button>
         </div>
     </form>

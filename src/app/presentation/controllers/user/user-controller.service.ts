@@ -15,8 +15,8 @@ export class UserControllerService implements UserRepository {
     return this.registerUser.signUp(user);
   }
 
-  login(email: string, password: string): Observable<UserData> {
-    return this.registerUser.login(email, password);
+  signIn(email: string, password: string): Observable<UserData> {
+    return this.registerUser.signIn(email, password);
   }
 
   logout(): Observable<boolean> {

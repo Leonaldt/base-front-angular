@@ -26,10 +26,10 @@ export class BaseComponent implements OnInit {
   }
 
   logout() {
-    this.userController.logout()
-      .subscribe(() => {
+    // this.userController.logout()
+    //   .subscribe(() => {
         this.authService.credentials = null;
         this.router.navigateByUrl('/login', { replaceUrl: true });
-      });
+      // });
   }
 }

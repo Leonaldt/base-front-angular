@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserControllerService } from '../../../controllers/user/user-controller.service';
+import { UserControllerService } from '../../../../controllers/user/user-controller.service';
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  templateUrl: './user-form.component.html',
+  styleUrls: ['./user-form.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserFormComponent implements OnInit {
 
   userForm = this.fb.group({
     name: ['', [Validators.required]],

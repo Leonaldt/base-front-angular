@@ -3,16 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { UserModule } from './user/user.module';
-import { LoginModule } from './login/login.module';
+import { SignInModule } from './sign-in/sign-in.module';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    LoginModule,
+    SignInModule,
     UserModule,
     PagesRoutingModule
   ],
-  exports: [PagesRoutingModule]
+  // exports: [PagesRoutingModule]
 })
 export class PagesModule { }

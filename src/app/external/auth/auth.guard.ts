@@ -15,13 +15,21 @@ export class AuthGuard implements CanActivate {
     ) { }
 
     canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        if (this.authService.isAuthenticated()) {
-            return true;
+        if (!this.authService.isAuthenticated()) {
+            this.router.navigateByUrl('/login', { replaceUrl: true });
+            return false;
         }
 
-        this.router.navigateByUrl('/login', { replaceUrl: true });
-        return false;
-
+        return true;
     }
 
+    // canActivateChildren(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    //     if (this.authService.isAuthenticated()) {
+    //         return true;
+    //     }
+
+    //     this.router.navigateByUrl('/login', { replaceUrl: true });
+    //     return false;
+
+    // }
 }

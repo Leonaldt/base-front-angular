@@ -8,15 +8,15 @@ import { AuthService } from 'src/app/external/auth/auth.service';
 import { UserRepository } from '../../../../core/usecases/ports/user-repository';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-sign',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class SignInComponent implements OnInit {
 
   isLoading: boolean;
 
-  form: FormGroup = this.fb.group({
+  signInForm: FormGroup = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required]
   });
@@ -35,13 +35,13 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this.usuarioController
-      .login(this.form.value.email, this.form.value.password)
+      .signIn(this.signInForm.value.email, this.signInForm.value.password)
       .pipe(finalize(() => {
         this.isLoading = false;
       }))
       .subscribe((usuario: UserData) => {
         this.authService.credentials = usuario;
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/users');
       }, () => {
         this.snackBar.open('Usuário ou senha inválidos.', null, {
           duration: 2000

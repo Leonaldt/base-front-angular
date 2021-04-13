@@ -1,5 +1,5 @@
 <section fxLayout="row" fxLayoutAlign="center center" style="height: 100%;">
-    <form [formGroup]="form" (ngSubmit)="login()" novalidate>
+    <form [formGroup]="signInForm" (ngSubmit)="login()" novalidate>
         <mat-card class="login-card" class="mat-elevation-z8">
             <mat-card-title>Login</mat-card-title>
             <mat-card-content fxLayout="column">
@@ -17,7 +17,7 @@
                     <button mat-button color="accent" routerLink="/auth/forgot">
                         <mat-icon>lock_open</mat-icon><u> Esqueci a senha</u>
                     </button>
-                    <button mat-button color="primary" type="submit" [disabled]="!form.valid">
+                    <button mat-button color="primary" type="submit" [disabled]="!signInForm.valid">
                         <mat-icon>check</mat-icon>Entrar
                     </button>
                 </div>

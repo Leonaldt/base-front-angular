@@ -1,17 +1,17 @@
-import { UserEntity } from './user-entity';
 import { User } from 'src/app/core/entities/user/user';
 import { InvalidEmailError } from 'src/app/core/entities/errors/invalid-email';
 import { InvalidNameError } from 'src/app/core/entities/errors/invalid-name';
 import { Either, right, left } from 'src/app/shared/either';
 import { Mapper } from '../../base/mapper';
+import { UserData } from 'src/app/core/entities/ports/user-data';
 
-export class UserRepositoryMapper extends Mapper<UserEntity, User> {
+export class UserRepositoryMapper extends Mapper<UserData, User> {
 
-    mapFrom(userEntity: UserEntity): any {
+    mapFrom(userData: UserData): any {
 
         const userOrError: Either<InvalidNameError | InvalidEmailError, User> =
             User.create({
-                name: userEntity.name, email: userEntity.email, password: userEntity.password
+                name: userData.name, email: userData.email, password: userData.password
             })
 
         if (userOrError.isLeft()) {
@@ -22,7 +22,7 @@ export class UserRepositoryMapper extends Mapper<UserEntity, User> {
         return right(user);
     }
 
-    mapTo(user: User): UserEntity {
+    mapTo(user: User): UserData {
         return {
             name: user.name.toString(),
             email: user.email.toString(),

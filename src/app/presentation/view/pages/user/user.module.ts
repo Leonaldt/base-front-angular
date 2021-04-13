@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserComponent } from './user.component';
+import { UserFormComponent } from './user-form/user-form.component';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
-    declarations: [UserComponent],
+    declarations: [
+        UserFormComponent,
+        UserListComponent
+    ],
     imports: [
         CommonModule,
         UserRoutingModule,
@@ -14,6 +18,9 @@ import { MaterialModule } from 'src/app/material.module';
         ReactiveFormsModule,
         MaterialModule
     ],
-    exports: [UserComponent]
+    exports: [
+        UserFormComponent,
+        UserListComponent
+    ]
 })
 export class UserModule { }
