@@ -1,4 +1,6 @@
-# BaseFront
+# Base Front-End
+
+Projeto base para um front-end em angular com controle de rotas, sign-in e sign-up de usuarios com padrões de projeto como: Clean Architecture, Clean Code e SOLID.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
