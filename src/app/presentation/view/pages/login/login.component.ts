@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this.usuarioController
-      .login(this.form.value.email, this.form.value.password)
+      .signIn(this.form.value.email, this.form.value.password)
       .pipe(finalize(() => {
         this.isLoading = false;
       }))
