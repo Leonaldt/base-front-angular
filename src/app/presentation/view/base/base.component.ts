@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserData } from 'src/app/core/entities/ports/user-data';
-import { RegisterUser } from 'src/app/core/usecases/ports/register-user';
+import { UserRepository } from 'src/app/core/usecases/ports/user-repository';
 import { AuthService } from 'src/app/external/auth/auth.service';
 
 @Component({
@@ -11,27 +11,25 @@ import { AuthService } from 'src/app/external/auth/auth.service';
 })
 export class BaseComponent implements OnInit {
 
+  readonly nameProject: string = 'Base Front-end Angular with Clean Architecture'
+
   constructor(
     private authService: AuthService,
-    private usuarioController: RegisterUser,
+    private userController: UserRepository,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   get usuario(): UserData {
     return this.authService.credentials;
   }
 
   logout() {
-    this.responseLogout();
-    // this.usuarioController.logout()
-    //   .subscribe(() => this.responseLogout());
-  }
-
-  responseLogout() {
-    this.authService.credentials = null;
-    this.router.navigateByUrl('/login', { replaceUrl: true });
+    this.userController.logout()
+      .subscribe(() => {
+        this.authService.credentials = null;
+        this.router.navigateByUrl('/login', { replaceUrl: true });
+      });
   }
 }

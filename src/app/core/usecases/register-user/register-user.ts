@@ -2,22 +2,21 @@ import { Injectable } from '@angular/core';
 import { Either, left, right } from 'src/app/shared/either';
 import { UseCase } from '../../base/usecase';
 import { UserData } from '../../entities/ports/user-data';
-import { UserRepository } from '../ports/user-repository';
 import { RegisterUserResponse } from './register-user-response';
 import { InvalidNameError } from '../../entities/errors/invalid-name'
 import { InvalidEmailError } from '../../entities/errors/invalid-email'
 import { User } from '../../entities/user/user'
-import { RegisterUser } from '../ports/register-user';
+import { UserRepository } from '../ports/user-repository';
 import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
-export class UserUseCase implements RegisterUser {
+export class UserUseCase implements UserRepository {
 
     constructor(private userRepo: UserRepository) { }
 
-    register(userData: UserData): Observable<UserData> {
+    signUp(userData: UserData): Observable<UserData> {
 
         // const userOrError: Either<InvalidNameError | InvalidEmailError, User> = User.create(userData)
 
@@ -33,11 +32,11 @@ export class UserUseCase implements RegisterUser {
 
         // return right(resultUser)
 
-        return this.userRepo.register({ name: userData.name, email: userData.email, password: userData.password })
+        return this.userRepo.signUp({ name: userData.name, email: userData.email, password: userData.password })
     }
 
-    login(param: UserData): Observable<UserData> {
-        return this.userRepo.login(param);
+    login(email: string, password: string): Observable<UserData> {
+        return this.userRepo.login(email, password);
     }
 
     logout(): Observable<boolean> {

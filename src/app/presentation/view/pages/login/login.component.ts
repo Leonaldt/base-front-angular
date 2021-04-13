@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { UserData } from 'src/app/core/entities/ports/user-data';
 import { AuthService } from 'src/app/external/auth/auth.service';
-import { RegisterUser } from '../../../../core/usecases/ports/register-user';
+import { UserRepository } from '../../../../core/usecases/ports/user-repository';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private usuarioController: RegisterUser
+    private usuarioController: UserRepository
   ) { }
 
   ngOnInit(): void { }
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this.usuarioController
-      .login(this.form.value)
+      .login(this.form.value.email, this.form.value.password)
       .pipe(finalize(() => {
         this.isLoading = false;
       }))

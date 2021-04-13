@@ -35,7 +35,7 @@ export class UserComponent implements OnInit {
 
   save() {
     this.userControllerService
-      .register({
+      .signUp({
         name: this.userForm.value.name,
         email: this.userForm.value.email,
         password: this.userForm.value.password1
