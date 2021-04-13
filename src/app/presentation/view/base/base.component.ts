@@ -21,7 +21,7 @@ export class BaseComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  get usuario(): UserData {
+  get user(): UserData {
     return this.authService.credentials;
   }
 

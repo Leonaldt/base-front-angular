@@ -8,11 +8,11 @@
 </mat-toolbar>
 
 <mat-menu #menu="matMenu" class="menu-user">
-    <mat-card class="menu-card" *ngIf="usuario">
+    <mat-card class="menu-card" *ngIf="user">
         <mat-card-header>
             <div mat-card-avatar class="menu-card-header-image"></div>
-            <mat-card-title>Olá, {{ usuario.name }}</mat-card-title>
-            <mat-card-subtitle>{{ usuario.email }}</mat-card-subtitle>
+            <mat-card-title>Olá, {{ user.name }}</mat-card-title>
+            <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
             <div fxLayout="row" fxLayoutAlign="center">
