@@ -13,7 +13,7 @@ export class UserWebRepository implements UserRepository {
     private mapper = new UserRepositoryMapper();
 
     constructor(private http: HttpClient) { }
-    
+
     signIn(email: string, password: string): Observable<UserData> {
         let user = {
             email: email,
@@ -36,7 +36,7 @@ export class UserWebRepository implements UserRepository {
     logout(): Observable<boolean> {
         throw new Error('Method not implemented.');
     }
-    
+
     // getUserById(id: number): Observable<UserData> {
     //     return this.http
     //         .get<UserData>('http://127.0.0.1:5000/api/v1/users/${id}')
