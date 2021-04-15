@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserControllerService } from '../../../../controllers/user/user-controller.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class UserFormComponent implements OnInit {
   }, { validator: this.matchingPasswords });
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private userControllerService: UserControllerService
   ) { }
@@ -40,7 +42,6 @@ export class UserFormComponent implements OnInit {
         email: this.userForm.value.email,
         password: this.userForm.value.password1
       })
-      // .then((result: any) => console.log('Ya Bish!', result))
-      .subscribe((result: any) => console.log('Ya bish...!', result));
+      .subscribe(() => this.router.navigate(['users']));
   }
 }
