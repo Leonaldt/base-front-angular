@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, UrlTree, Router } from '@angular/router';
+import { CanActivate, UrlTree, Router, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService } from './auth.service';
@@ -7,14 +7,17 @@ import { AuthService } from './auth.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanActivateChild {
 
     constructor(
         private router: Router,
         private authService: AuthService,
     ) { }
 
-    canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+
+        console.log('canActivate')
+
         if (!this.authService.isAuthenticated()) {
             this.router.navigateByUrl('/login', { replaceUrl: true });
             return false;
@@ -23,13 +26,15 @@ export class AuthGuard implements CanActivate {
         return true;
     }
 
-    // canActivateChildren(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    //     if (this.authService.isAuthenticated()) {
-    //         return true;
-    //     }
+    canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
-    //     this.router.navigateByUrl('/login', { replaceUrl: true });
-    //     return false;
+        console.log('canActivateChild')
 
-    // }
+        if (!this.authService.isAuthenticated()) {
+            this.router.navigateByUrl('/login', { replaceUrl: true });
+            return false;
+        }
+
+        return true;
+    }
 }

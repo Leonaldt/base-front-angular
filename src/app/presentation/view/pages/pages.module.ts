@@ -13,6 +13,6 @@ import { SignInModule } from './sign-in/sign-in.module';
     UserModule,
     PagesRoutingModule
   ],
-  // exports: [PagesRoutingModule]
+  exports: [PagesRoutingModule]
 })
 export class PagesModule { }
