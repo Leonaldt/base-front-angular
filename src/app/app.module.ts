@@ -9,6 +9,8 @@ import { PresentationModule } from './presentation/presentation.module';
 import { RouterModule } from '@angular/router';
 import { UserWebRepository } from './external/repository/user/user-web-repository';
 import { UserRepository } from './core/usecases/ports/user-repository';
+import { HttpInterceptorService } from './external/http/http-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -26,7 +28,8 @@ import { UserRepository } from './core/usecases/ports/user-repository';
     PresentationModule
   ],
   providers: [
-    { provide: UserRepository, useClass: UserWebRepository }
+    { provide: UserRepository, useClass: UserWebRepository },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent]
 })

@@ -15,42 +15,32 @@ export class HttpInterceptorService implements HttpInterceptor {
         private router: Router
     ) { }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (this.authService.credentials) {
-            req = req.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${this.authService.credentials.token}`
-                }
-            });
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        if (this.authService.getCredentials())
+            request = request.clone({ setHeaders: { 'Authorization': `Bearer ${this.authService.credentials.token}` } });
 
-            return next.handle(req).pipe(catchError(error => this.errorHandler(error)));
-        } else {
-            return next.handle(req).pipe(catchError(error => this.errorHandler(error)));
-        }
+        return next.handle(request).pipe(catchError(response => this.errorHandler(response)));
     }
 
     private errorHandler(response: HttpErrorResponse): Observable<HttpEvent<any>> {
-        let errs: any[] = [];
-
         switch (response.status) {
             case 400:
                 console.log('Error', response.status);
                 break;
             case 401:
+                console.log('401 - Não Autorizado.');
+                this.authService.credentials = null;
                 this.router.navigateByUrl('/login', { replaceUrl: true });
                 break;
             case 404:
-                // errs.push(new ValidationError('', '', '<strong>404</strong>: O recurso requisitado não existe.'));
-                console.log('O recurso requisitado não existe.');
+                console.log('404 - O recurso requisitado não existe.');
                 break;
             case 406:
             case 409:
             case 500:
-                console.log('Ocorreu um erro inesperado de servidor.');
+                console.log('500 - Ocorreu um erro inesperado no servidor.');
                 break;
         }
-
-        return throwError(errs);
+        return throwError(response);
     }
-
 }

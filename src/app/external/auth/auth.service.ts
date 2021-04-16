@@ -22,6 +22,19 @@ export class AuthService {
         return !!this.credentials;
     }
 
+    getCredentials() {
+        return localStorage.getItem(credentialsKey);
+    }
+
+    removeCredentials() {
+        localStorage.removeItem(credentialsKey);
+    }
+
+
+    hasCredentials() {
+        return !!this.getCredentials();
+    }
+
     get credentials(): UserData {
         return this.usuario;
     }
