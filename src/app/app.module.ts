@@ -11,6 +11,7 @@ import { UserWebRepository } from './external/repository/user/user-web-repositor
 import { UserRepository } from './core/usecases/ports/user-repository';
 import { HttpInterceptorService } from './external/http/http-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,10 +22,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     RouterModule,
 
     // Application imports
-    // CoreModule,
-    // DomainModule,
-    ExternalModule,
-    // InfraModule,
+    MaterialModule,
     PresentationModule
   ],
   providers: [

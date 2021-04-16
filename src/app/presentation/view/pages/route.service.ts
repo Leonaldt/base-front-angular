@@ -14,7 +14,6 @@ export class RouteService {
             component: BaseComponent,
             children: routes,
             canActivate: [AuthGuard],
-            // canActivateChild: [AuthGuard]
         };
     }
 

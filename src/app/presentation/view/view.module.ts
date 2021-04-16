@@ -11,10 +11,7 @@ import { PagesModule } from './pages/pages.module';
         CommonModule,
         BaseModule,
         PagesModule,
-        // SharedModule
     ],
-    exports: [
-        PagesModule
-    ]
+    exports: [PagesModule]
 })
 export class ViewModule { }

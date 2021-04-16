@@ -24,21 +24,6 @@ const routes: Routes = [
             data: { title: 'Update User' }
         }
     ])
-    // {
-    //     path: '',
-    //     component: UserListComponent,
-    //     data: { title: 'Users' }
-    // },
-    // {
-    //     path: 'new',
-    //     component: UserFormComponent,
-    //     data: { title: 'New User' }
-    // },
-    // {
-    //     path: 'edit/:id',
-    //     component: UserFormComponent,
-    //     data: { title: 'Update User' }
-    // }
 ];
 
 @NgModule({
