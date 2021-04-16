@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
-import { ExternalModule } from './external/external.module';
 import { PresentationModule } from './presentation/presentation.module';
 import { RouterModule } from '@angular/router';
 import { UserWebRepository } from './external/repository/user/user-web-repository';

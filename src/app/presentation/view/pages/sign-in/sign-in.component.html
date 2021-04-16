@@ -4,7 +4,7 @@
             <mat-card-title>Login</mat-card-title>
             <mat-card-content fxLayout="column">
                 <mat-form-field>
-                    <input matInput formControlName="email" type="text" placeholder="Usuario" autocomplete="email"
+                    <input matInput formControlName="email" type="text" placeholder="User" autocomplete="email"
                         readonly="false">
                 </mat-form-field>
                 <mat-form-field>
@@ -14,7 +14,7 @@
             </mat-card-content>
             <mat-card-actions>
                 <div fxLayout="row" fxLayoutAlign="space-between">
-                    <button mat-button color="accent" routerLink="/auth/forgot">
+                    <button mat-button color="accent" type="button" routerLink="/forgot">
                         <mat-icon>lock_open</mat-icon><u> Esqueci a senha</u>
                     </button>
                     <button mat-button color="primary" type="submit" [disabled]="!signInForm.valid">
@@ -22,7 +22,7 @@
                     </button>
                 </div>
             </mat-card-actions>
-            <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar> -->
+            <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
         </mat-card>
     </form>
 </section>
