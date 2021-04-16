@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserUseCase } from './usecases/register-user/register-user';
+import { RegisterUserUseCase } from './usecases/register-user/user-usecase';
 import { RegisterUser } from './usecases/ports/register-user';
 
 @NgModule({
@@ -9,7 +9,7 @@ import { RegisterUser } from './usecases/ports/register-user';
         CommonModule
     ],
     providers: [
-        { provide: RegisterUser, useClass: UserUseCase }
+        { provide: RegisterUser, useClass: RegisterUserUseCase }
     ]
 })
 export class CoreModule { }

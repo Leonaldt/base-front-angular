@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserRepositoryMapper } from './user-repository-mapper';
 import { map } from 'rxjs/operators';
@@ -13,6 +13,10 @@ export class UserWebRepository implements UserRepository {
     private mapper = new UserRepositoryMapper();
 
     constructor(private http: HttpClient) { }
+    
+    logout(): Observable<boolean> {
+        throw new Error('Method not implemented.');
+    }
 
     signIn(email: string, password: string): Observable<UserData> {
         let user = {
@@ -30,16 +34,12 @@ export class UserWebRepository implements UserRepository {
             password: userData.password
         }
 
-        return this.http.post<UserData>('http://127.0.0.1:5000/api/register', user);
+        return from(this.http.post<UserData>('http://127.0.0.1:5000/api/register', user))
     }
 
-    logout(): Observable<boolean> {
-        throw new Error('Method not implemented.');
+    getUserById(id: number): Observable<UserData> {
+        return this.http
+            .get<UserData>('http://127.0.0.1:5000/api/v1/users/${id}')
+            .pipe(map(this.mapper.mapFrom));
     }
-
-    // getUserById(id: number): Observable<UserData> {
-    //     return this.http
-    //         .get<UserData>('http://127.0.0.1:5000/api/v1/users/${id}')
-    //         .pipe(map(this.mapper.mapFrom));
-    // }
 }
